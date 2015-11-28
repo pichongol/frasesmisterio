@@ -195,6 +195,7 @@ strong { font-weight: bold; }
 }
 .main-tests h2 span {
 	color: #4db2ec;
+	font-weight: bold;
 }
 .main-tests ul {
 	max-width: 886px;
@@ -518,9 +519,11 @@ strong { font-weight: bold; }
   		padding: 10px 0 10px 12px;
   		display: inline-block !important;
 	}
+	/*
 	.main-tests {
 		padding-bottom: 80px;
 	}
+	*/
 	.footer-top img {
 		display: none;
 		visibility: hidden;
@@ -564,11 +567,13 @@ strong { font-weight: bold; }
 		font-size: 2.188em;
 	}
 }
+/*
 @media only screen and (max-width: 420px){
 	.footer-top span {
 		padding-top: 16px;
 	}
 }
+*/
 @media only screen and (max-width: 390px){
 	.container-like-fb .fb_iframe_widget {
 		padding-top: 10px;

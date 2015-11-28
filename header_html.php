@@ -86,7 +86,6 @@
 				<h1><a href="/"><?=_t("")?></a></h1>
 				<div>Frases</div>
 			</div>
-			<div class="menu-mobil"><img src="/images/menu-mobil-icon.png"></div>
 			<div class="clearfix"></div>
 		</header>
 	</div>

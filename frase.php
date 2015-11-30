@@ -36,12 +36,15 @@ if($today != $date){
 	$title = "Frases Del {$date_aux}";
 }
 else {
-	$title = "Frases Del Dia";	
+	$title = "Frases Del Dia";
 }
 
 if(isset($idImage)){
 	$shareImage = "http://www.{$domain}/images/es/{$date}-{$idImage}.jpg";
 }
+
+$ogTitle = "Frases Del Dia";
+$ogDescription = "Frases Que Inspiran...";
 
 include("header_html.php");
 ?>

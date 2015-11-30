@@ -34,19 +34,12 @@
 	<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png" />
 	<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png" />
 
-	<meta property="og:title" content="<?=$title?>"/>
+	<meta property="og:title" content="<?=$ogTitle?>"/>
 	<meta property="og:url" content="<?=$url?>"/>
-	<meta property="og:description" content="<?=$description?>"/>
+	<meta property="og:description" content="<?=$ogDescription?>"/>
 	<? if(isset($shareImage)) { ?>
 	<meta property="og:image" content="<?=$shareImage?>"/>
 	<meta property="og:image:type" content="image/jpg"/>
-	<? if($name){ ?>
-	<meta property="og:image:width" content="800"/>
-	<meta property="og:image:height" content="420"/>
-	<? } elseif(($settings['type'] == "apps") || ($settings['type'] == "appsfechaambos")){ ?>
-	<meta property="og:image:width" content="1024"/>
-	<meta property="og:image:height" content="600"/>
-	<? } ?>
 	<? } ?>
 
 	<script type="text/javascript">

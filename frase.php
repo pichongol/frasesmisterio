@@ -5,21 +5,28 @@ include("config.php");
 include("header.php");
 include("test_apps.php");
 
-//$testSrc = $imgServer."/images/{$language}/{$testName}/r{$id}.png";
-//$shareURL = "http://www.{$domain}/$testName/compartir/$id";
-
-include("header_html.php");
-
 $imgs = scandir($img_path);
 rsort($imgs);
 
 foreach ($imgs as $img) { 
 	if(strpos($img, ".jpg")!==false){
 		$img_aux = explode("-", $img);
+
 		unset($img_aux[3]);
 		$today = implode("-", $img_aux);
 		break;
 	}
+}
+
+if(isset($_GET['name'])){
+	$name_aux = explode("-", $_GET['name']);
+
+	if(isset($name_aux[3])){
+		$idImage = $name_aux[3];
+	}
+
+	unset($name_aux[3]);
+	$_GET['dia'] = implode("-", $name_aux);
 }
 
 $date = isset($_GET['dia']) ? $_GET['dia'] : $today;
@@ -32,6 +39,11 @@ else {
 	$title = "Frases Del Dia";	
 }
 
+if(isset($idImage)){
+	$shareImage = "http://www.{$domain}/images/es/{$date}-{$idImage}.jpg";
+}
+
+include("header_html.php");
 ?>
 
 <div style="margin:10px;">
@@ -72,7 +84,11 @@ else {
 				<div id="ikinci">
 					<h2><?=_t($title)?></h2>
 
-					<? for($i=1;$i<4;$i++){ ?>
+					<? 
+					for($i=1;$i<4;$i++){ 
+						$shareURL = "http://www.{$domain}/frase/{$date}-{$i}";
+
+					?>
 					<figure><img src="/images/es/<?=$date."-".$i?>.jpg"></figure>
 					<a class="shared-fb-btn" href="#" onClick="window.open('http://www.facebook.com/sharer.php?u=<?=$shareURL?>','_blank', 'width=600, height=400'); _gaq.push(['_trackEvent', 'results', 'share']); return false;"><?=_t("Compartir en Facebook")?></a>
 					<? } ?>
@@ -91,11 +107,9 @@ else {
 						</div>
 
 						<div class="container-like-fb">
-							<span class="shared-fb-title"><?=_t("Te gusto el resultado")?>?</span>
-							<iframe src="//www.facebook.com/plugins/like.php?href=https://www.facebook.com/pages/MiniJuegos/880586805314125&amp;width=76&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:76px; height:21px; " allowTransparency="true"></iframe>
+							<span class="shared-fb-title"><?=_t("Te gustan estas frases?")?>?</span>
+							<iframe src="//www.facebook.com/plugins/like.php?href=https://www.facebook.com/Frases-Misterio-166750767013287&amp;width=76&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:76px; height:21px; " allowTransparency="true"></iframe>
 						</div>
-
-						<a class="repeat-btn" href="http://www.<?=$domain?>/<?=$testName?>/"><img src="/images/repeat-icon.png"><span><?=_t("Repetir test")?></span></a>
 						<div class="clearfix"></div>
 					</div>
 				</div>
@@ -132,7 +146,7 @@ else {
 				?>
 				<li>
 				  <article>
-				    <figure><a href="/frase/?dia=<?=$dia?>"><img style="border:8px solid #f3f3f3; max-width: 100%; margin-bottom:10px;" src="/images/es/<?=$img?>"></a></figure>
+				    <figure><a href="/frase/<?=$dia?>"><img style="border:8px solid #f3f3f3; max-width: 100%; margin-bottom:10px;" src="/images/es/<?=$img?>"></a></figure>
 				  </article>
 				</li>
 				<? }} ?>

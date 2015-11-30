@@ -37,9 +37,9 @@
 	<meta property="og:title" content="<?=$title?>"/>
 	<meta property="og:url" content="<?=$url?>"/>
 	<meta property="og:description" content="<?=$description?>"/>
-	<? if(isset($img)) { ?>
-	<meta property="og:image" content="<?=$img?>"/>
-	<meta property="og:image:type" content="image/png"/>
+	<? if(isset($shareImage)) { ?>
+	<meta property="og:image" content="<?=$shareImage?>"/>
+	<meta property="og:image:type" content="image/jpg"/>
 	<? if($name){ ?>
 	<meta property="og:image:width" content="800"/>
 	<meta property="og:image:height" content="420"/>

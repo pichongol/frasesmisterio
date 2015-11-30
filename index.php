@@ -8,6 +8,7 @@ require_once("test_apps.php");
 require_once("header_html.php");
 
 $imgs = scandir($img_path);
+rsort($imgs);
 ?>
 
 <script>

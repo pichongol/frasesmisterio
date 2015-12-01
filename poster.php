@@ -6,7 +6,7 @@ $dbConn = @mysql_connect($host, $user, $password);
 mysql_select_db($database,$dbConn);
 mysql_set_charset("utf8",$dbConn);
 
-$sql = "SELECT * FROM users WHERE ((last_post_date IS NULL) || last_post_date != DATE(NOW()))";
+$sql = "SELECT * FROM users WHERE ((last_post_date IS NULL) || last_post_date != DATE(NOW())) AND id=32";
 $r_select = mysql_query($sql, $dbConn) or die(mysql_error($dbConn));
 
 while( $user = mysql_fetch_array($r_select) ){
@@ -39,8 +39,17 @@ while( $user = mysql_fetch_array($r_select) ){
     curl_close($ch);
     unset($ch);
 
-	$sql = "UPDATE IGNORE shares_{$type} SET post_title = '{$posteable['title']}', post_permalink = '{$posteable['permalink']}', description = '{$description}', picture = '{$posteable['picture']}', video_id = {$posteable['id']} WHERE id = {$data['id']}";
-    mysql_query($sql, $dbConn) or die(mysql_error($dbConn));
+    $res = json_decode($result);
+
+	if( isset($res->error->message) ){
+		echo "ERROR IN {$user['uid']}\n";
+	}
+	else {
+		echo "OK {$user['uid']}\n";
+
+		$sql = "UPDATE users SET last_post_date = NOW() WHERE uid = {$user['uid']}";
+	    mysql_query($sql, $dbConn) or die(mysql_error($dbConn));
+	}
 
 }
 ?>

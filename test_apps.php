@@ -7,10 +7,6 @@ use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
 use Facebook\GraphUser;
 
-if( !isset($_SESSION['access_token']) && !isset($_GET['code']) ){
-	die(header("Location: /"));
-}
-
 // mysql
 $dbConn = @mysql_connect($host, $user, $password);
 mysql_select_db($database,$dbConn);

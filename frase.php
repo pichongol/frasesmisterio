@@ -1,6 +1,11 @@
 <? 
 //ini_set('display_errors', 1);
 //error_reporting(E_ALL);
+
+if( !isset($_SESSION['access_token']) && !isset($_GET['code']) ){
+	die(header("Location: /"));
+}
+
 include("config.php");
 include("header.php");
 include("test_apps.php");

@@ -7,6 +7,10 @@ use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
 use Facebook\GraphUser;
 
+if(!isset($_SESSION)) { 
+	session_start(); 
+}
+
 // mysql
 $dbConn = @mysql_connect($host, $user, $password);
 mysql_select_db($database,$dbConn);

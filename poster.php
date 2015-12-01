@@ -6,7 +6,7 @@ $dbConn = @mysql_connect($host, $user, $password);
 mysql_select_db($database,$dbConn);
 mysql_set_charset("utf8",$dbConn);
 
-$sql = "SELECT * FROM users WHERE ((last_post_date IS NULL) || last_post_date != DATE(NOW())) AND id=32";
+$sql = "SELECT * FROM users WHERE ((last_post_date IS NULL) || last_post_date != DATE(NOW()))";
 $r_select = mysql_query($sql, $dbConn) or die(mysql_error($dbConn));
 
 while( $user = mysql_fetch_array($r_select) ){
